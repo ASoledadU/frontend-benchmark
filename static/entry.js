@@ -1,9 +1,9 @@
-const likes = document.querySelectorAll("#divOfLikes")
+const likes = document.querySelectorAll("#liOfContent")
 
 for (const like of likes) {
     const actualLike = like.querySelector("#clickme");
     actualLike.addEventListener('click', () => {
-        const url = "/entries/entry.likes/like"
+        const url = "entries/<int:id>/like"
         fetch(url)
             .then(response => response.json())
             .then(data => {

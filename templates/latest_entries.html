@@ -12,7 +12,6 @@
 </head>
 
 <body>
-<p id="result"></p>
     <div>
     <a href="{% url 'create_entry' %}">
         <button id="makeAnEntry"> Want to make an Entry? </button>
@@ -26,7 +25,8 @@
         <li id="liOfContent">
             <div>
                 {{ entry.content }}
-    <button onclick="clickCounter()" type="button">👍🏽</button>
+                <p id="result"></p>
+    <button onclick="clickCounter()" type="button" id="clickme">👍🏽</button>
     </div>
 
                     <p id="entryLikes">{{ entry.likes }}</p>
