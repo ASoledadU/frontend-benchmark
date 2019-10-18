@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="{% static "entry.js" %}" defer></script>
+    <title>Benchmark</title>
+</head>
+
+<body>
+    <form action="{% url 'create_entry' %}" method="POST">
+        {% csrf_token %}
+        <label>
+            <input type="text" name="title" id="title" placeholder="What to post..." />
+        </label>
+        <button>New Entry</button>
+    </form>
+<ul>
+{% for entry in entries %}
+<li>
+<p> {{entry.title}} </p>
+</li>
+{% endfor %}
+</ul>
+
+    <div>
+    <a href="{% url 'create_entry' %}">
+        <button id="makeAnEntry"> Want to make an Entry? </button>
+    </a>
+    <a href="{% url 'top_entries' %}">
+        <button>Top Entries </button>
+    </a>
+    </div>
+    <ul>
+        {% for entry in entries %}
+        <li id="liOfContent">
+            <div>
+                {{ entry.content }}
+            </div>
+            <div id="divOfLikes">
+                <button id="like">
+                    <div>LIKE</div>
+                    <p id="entryLikes">{{ entry.likes }}</p>
+                </button>
+            </div>
+        </li>
+
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>
