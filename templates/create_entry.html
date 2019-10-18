@@ -7,32 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{% static "entry.js" %}" defer></script>
+    <link rel="stylesheet" href="createEntry.css">
     <title>Benchmark</title>
 </head>
 
 <body>
-    <form action="{% url 'create_entry' %}" method="POST">
-        {% csrf_token %}
-        <label>
-            <input type="text" name="title" id="title" placeholder="What to post..." />
-        </label>
-        <button>New Entry</button>
-    </form>
-<ul>
-{% for entry in entries %}
-<li>
-<p> {{entry.title}} </p>
-</li>
-{% endfor %}
-</ul>
+<form action="{% url 'create_entry' %}" method="post">                                                             
+  {% csrf_token %}
+  <label for="content"></label>
+  <input type="text" name="content" id="content" />
+  <input type="submit" value=" Post 📫 " />
+</form>
 
+    <ul>
+        {% for entry in entries %}
+        <li>
+            <p> {{entry.title}} </p>
+        </li>
+        {% endfor %}
+    </ul>
     <div>
-    <a href="{% url 'create_entry' %}">
-        <button id="makeAnEntry"> Want to make an Entry? </button>
-    </a>
-    <a href="{% url 'top_entries' %}">
-        <button>Top Entries </button>
-    </a>
+        <a href="{% url 'top_entries' %}">
+            <button id="topEntries">Top Entries </button>
+        </a>
     </div>
     <ul>
         {% for entry in entries %}
@@ -42,7 +39,7 @@
             </div>
             <div id="divOfLikes">
                 <button id="like">
-                    <div>LIKE</div>
+                    LIKE
                     <p id="entryLikes">{{ entry.likes }}</p>
                 </button>
             </div>

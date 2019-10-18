@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{% static "entry.js" %}" defer></script>
+    <link rel="stylesheet" href="createEntry.css">
     <title>Benchmark</title>
 </head>
 
 <body>
+<p id="result"></p>
     <div>
     <a href="{% url 'create_entry' %}">
         <button id="makeAnEntry"> Want to make an Entry? </button>
@@ -24,12 +26,10 @@
         <li id="liOfContent">
             <div>
                 {{ entry.content }}
-            </div>
-            <div id="divOfLikes">
-                <button id="like">
-                    <div>LIKE</div>
+    <button onclick="clickCounter()" type="button">👍🏽</button>
+    </div>
+
                     <p id="entryLikes">{{ entry.likes }}</p>
-                </button>
             </div>
         </li>
 
